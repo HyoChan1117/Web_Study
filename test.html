@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 연습</title>
+</head>
+<body>
+    <!-- 1. 텍스트 관련 요소 -->
+    <h1>HTML 실습</h1>
+    <p>아래는 다양한 HTML 요소를 연습할 수 있는 예제입니다.</p>
+    <p><strong>굵은 텍스트</strong>와 <em>기울임 텍스트</em>를 사용해보세요.</p>
+    <p>줄바꿈을 위해 <br> 태그를 사용하면 이렇게 됩니다!</p>
+    <hr>
+
+    <!-- 2. 폼 관련 요소 -->
+    <h2>폼 요소</h2>
+    <form action="#" method="post">
+        <!-- 텍스트 입력 -->
+        <label for="username">이름:</label>
+        <input type="text" id="username" name="username" placeholder="이름을 입력하세요" required>
+        <br><br>
+
+        <!-- 이메일 입력 -->
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" placeholder="이메일 주소를 입력하세요">
+        <br><br>
+
+        <!-- 숫자 입력 -->
+        <label for="age">나이:</label>
+        <input type="number" id="age" name="age" min="1" max="100">
+        <br><br>
+
+        <!-- 드롭다운 -->
+        <label for="gender">성별:</label>
+        <select id="gender" name="gender">
+            <option value="male">남성</option>
+            <option value="female">여성</option>
+            <option value="other">기타</option>
+        </select>
+        <br><br>
+
+        <!-- 텍스트 영역 -->
+        <label for="comments">코멘트:</label><br>
+        <textarea id="comments" name="comments" rows="4" cols="50" placeholder="내용을 입력하세요"></textarea>
+        <br><br>
+
+        <!-- 3. 체크박스 -->
+        <h3>체크박스</h3>
+        <input type="checkbox" id="agree" name="agree">
+        <label for="agree">이용 약관에 동의합니다.</label>
+        <br><br>
+
+        <!-- 4. 버튼 -->
+        <button type="submit">제출</button>
+        <button type="reset">초기화</button>
+    </form>
+</body>
+</html>
