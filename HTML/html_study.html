@@ -1,0 +1,77 @@
+<!-- HTML5 문서 선언 / !DOCTYPE html -->
+<!-- HTML 문서를 올바르게 해석하도록 브라우저에게 알려줌 -->
+<!DOCTYPE html>
+
+<!-- 문서 언어 설정 / html lang="ko" -->
+<!-- HTML 문서의 언어를 한국어(ko)로 설정 -->
+<html lang="ko">
+
+<!-- 문서의 메타정보(문자 인코딩, 제목 등) / head -->
+<!-- head: 웹 페이지의 정보를 포함하며, 웹 브라우저가 페이지를 해석하는 데 필요한 설정 포함 -->
+<head>
+    <!-- 문자 인코딩: meta charset -> 한글이 깨지지 않음 -->
+    <!-- 메타데이터 설정: meta name(어떤 정보를 설정하는지), content(설정할 값) -->
+    <!-- viewport: 사용자가 보는 화면의 크기를 조절하는 역할 -->
+    <!-- width=device-width: 화면의 너비를 디바이스의 화면 크기에 맞춤 -->
+    <!-- initial-scale=1.0: 초기 줌(확대) 비율을 1로 설정 -->
+    <meta charset="UTF-8">
+    <meta name="viewport", content="width=device-width, initial-scale=1.0">
+    <!-- title: 웹 브라우저의 탭에 표시될 제목-->
+    <title>HTML 연습</title>
+</head>
+
+<!-- 웹 페이지의 실제 내용 / body -->
+<body>
+    <!-- 1. 텍스트 관련 요소 -->
+    <h1>HTML 실습습</h1>
+    <p>아래는 다양한 HTML 요소를 연습할 수 있는 예제입니다.</p>
+    <p><strong>굵은 텍스트</strong>와 <em>기울임 텍스트</em>를 사용해보세요.</p>
+    <p>줄바꿈을 위해 <br> 태그를 사용하면 이렇게 됩니다!</p>
+    <hr>
+
+    <!-- 2. 폼 관련 요소 -->
+    <h2>폼 요소</h2>
+    <form action="#" method="post">
+        <!-- 텍스트 입력 -->
+        <label for="username">이름:</label> <!-- for은 id와 연결 -->
+        <!-- type는 텍스트 입력 필드 생성, name은 입력값 서버로 데이터 전송, placeholder는 미리보기 텍스트 -->
+        <input type="text" id="username" name="username" placeholder="이름을 입력하세요" required>
+        <br><br>
+        
+        <!-- 이메일 입력 -->
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" placeholder="이메일 주소를 입력하세요">
+        <br><br>
+
+        <!-- 나이 입력 -->
+        <label for="age">나이:</label>
+        <input type="number" id="age" name="age" placeholder="나이를 입력하세요">
+        <br><br>
+
+        <!-- 성별 선택 -->
+        <label for="gender">성별:</label>
+        <!-- 옵션 선택 -->
+        <select id="gender" name="gender">
+            <option value="male">남성</option>
+            <option value="female">여성</option>
+            <option value="etc">기타</option>
+        </select>
+        <br><br>
+
+        <!-- 텍스트 영역 -->
+        <label for="comments">코멘트:</label><br>
+        <textarea id="comments" name="comments" rows="4" cols="50" placeholder="내용을 입력하세요"></textarea>
+        <br><br>
+
+        <!-- 3. 체크 박스-->
+        <h3>체크박스</h3>
+        <input type="checkbox" id="agree" name="agree">
+        <label for="agree">이용 약관에 동의합니다</label>
+        <br><br>
+
+        <!-- 4. 버튼 -->
+        <button type="submit">제출</button>
+        <button type="reset">초기화</button>
+    </form>
+</body>
+</html>
