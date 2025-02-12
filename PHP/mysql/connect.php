@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "user";
-$password = "1234";
+$username = "hyochan";
+$password = "40957976";
 $database = "sample";
 
 // MySQL 연결 시도
