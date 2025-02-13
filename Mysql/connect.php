@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "hyochan";
 $password = "40957976";
-$database = "sample";
+$database = "test";
 
 // MySQL 연결 시도
 $conn = new mysqli($servername, $username, $password, $database);
@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     die("연결 실패: " . $conn->connect_error);
 }
 else 
-    echo "MySQL 연결 성공!";
+    echo " MySQL 연결 성공!";
 
 $conn->close();
 ?>
