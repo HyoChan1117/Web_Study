@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "hyochan";
 $password = "40957976";
-$database = "test";
+$database = "board_login";
 
 // MySQL 연결 시도
 $conn = new mysqli($servername, $username, $password, $database);

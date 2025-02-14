@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // 게시글 가져오기
-$sql = "SELECT id, title, author, created_at FROM board ORDER BY created_at DESC";
+$sql = "SELECT id, name, subject, created_at FROM board ORDER BY created_at DESC";
 $result = $conn->query($sql);
 
 ?>
@@ -26,12 +26,12 @@ $result = $conn->query($sql);
     <title>게시판 리스트</title>
 </head>
 <body>
-    <h3>게시판</h3>
-    <table border="0">
+    <h3>게시판 리스트</h3>
+    <table border="1">
         <tr>
             <th>번호</th>
+            <th>이름</th>
             <th>제목</th>
-            <th>작성자</th>
             <th>작성일</th>
         </tr>
         <?php
@@ -39,8 +39,8 @@ $result = $conn->query($sql);
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td>{$row['id']}</td>";
-                echo "<td><a href='list.php?id={$row['id']}'>{$row['title']}</a></td>";
-                echo "<td>{$row['author']}</td>";
+                echo "<td>{$row['name']}</td>";
+                echo "<td><a href='read.php?id={$row['id']}'>{$row['subject']}</a></td>";
                 echo "<td>{$row['created_at']}</td>";
                 echo "</tr>";
             }
