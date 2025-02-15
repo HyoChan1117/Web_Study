@@ -1,4 +1,6 @@
 <?php
+include 'header.php';
+
 $servername = "localhost";
 $username = "hyochan";  // 본인의 MySQL 계정명
 $password = "40957976";  // 본인의 MySQL 비밀번호
@@ -13,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 // 게시글 가져오기
-$sql = "SELECT id, name, subject, created_at FROM board ORDER BY created_at DESC";
+$sql = "SELECT id, name, subject, created_at  FROM board ORDER BY created_at DESC";
 $result = $conn->query($sql);
 
 ?>
@@ -26,7 +28,8 @@ $result = $conn->query($sql);
     <title>게시판 리스트</title>
 </head>
 <body>
-    <h3>게시판 리스트</h3>
+    <h5>환영합니다, <?php echo $_SESSION['username']; ?>님! <a href="logout.php">로그아웃</a> </h5>
+    <h3>게시판 > 리스트</h3>
     <table border="1">
         <tr>
             <th>번호</th>

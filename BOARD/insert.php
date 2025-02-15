@@ -1,3 +1,7 @@
+<?php
+include("header.php");
+?>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,7 +10,8 @@
     <title>게시판 작성</title>
 </head>
 <body>
-    <h3>게시판 작성</h3>
+    <h5>환영합니다, <?php echo $_SESSION['username']; ?>님! <a href="logout.php">로그아웃</a> </h5>
+    <h3>게시판 > 글쓰기</h3>
     <form action="insert_process.php" method="post">
         이름 : <input type="text" name="name" placeholder="이름을 입력하세요"><br><br>
         비밀번호 : <input type="password" name="password" placeholder="비밀번호를 입력하세요"><br><br>

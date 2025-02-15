@@ -9,7 +9,6 @@
     <h3>회원가입</h3>
     <!-- 회원가입 폼 -->
     <form action="db_account.php" method="post">
-        이름 : <input type="text" name="name" placeholder="이름을 입력하세요."><br><br>
         아이디 : <input type="email" name="id" placeholder="아이디를 입력하세요."><br><br>
         비밀번호 : <input type="password" name="pass" placeholder="비밀번호를 입력하세요."><br><br>
         비밀번호 확인 : <input type="password" name="pass_check" placeholder="비밀번호를 확인합니다."><br><br>
