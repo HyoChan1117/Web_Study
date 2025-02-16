@@ -10,3 +10,8 @@ CREATE TABLE board (
     content TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE login (
+    id char(20) NOT NULL,
+    password CHAR(20) NOT NULL
+);
