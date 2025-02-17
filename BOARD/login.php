@@ -14,8 +14,6 @@
         <input type="submit" value="로그인"><br><br><hr>
     </form>
     <!-- 회원가입 폼 -->
-    <form action="join.php" method="post">
-        아직 계정이 없으십니까? <button type="submit">회원가입</button><br><br>
-    </form>
+    <p>아직 계정이 없으십니까? <a href="join.php"><button>회원가입</button></a></p>
 </body>
 </html>

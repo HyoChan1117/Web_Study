@@ -9,10 +9,11 @@
     <h3>회원가입</h3>
     <!-- 회원가입 폼 -->
     <form action="db_account.php" method="post">
-        아이디 : <input type="email" name="id" placeholder="아이디를 입력하세요."><br><br>
-        비밀번호 : <input type="password" name="pass" placeholder="비밀번호를 입력하세요."><br><br>
-        비밀번호 확인 : <input type="password" name="pass_check" placeholder="비밀번호를 확인합니다."><br><br>
-        <button type="submit">회원가입</button> <button type="reset">초기화</button><br><br><hr>
+        <p>아이디 : <input type="email" name="id" placeholder="아이디를 입력하세요."></p>
+        <p>비밀번호 : <input type="password" name="pass" placeholder="비밀번호를 입력하세요."></p>
+        <p>비밀번호 확인 : <input type="password" name="pass_check" placeholder="비밀번호를 확인합니다."></p>
+        <p><button type="submit">회원가입</button> <button type="reset">초기화</button></p>
+        <hr>
     </form>
     <!-- 로그인 창 폼 돌아가기 -->
     로그인 페이지로 돌아가시겠습니까? <a href="login.php">돌아가기</a>

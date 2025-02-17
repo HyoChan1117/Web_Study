@@ -10,7 +10,6 @@ include("header.php");
     <title>게시판 작성</title>
 </head>
 <body>
-    <h5>환영합니다, <?php echo $_SESSION['username']; ?>님! <a href="logout.php">로그아웃</a> </h5>
     <h3>게시판 > 글쓰기</h3>
     <form action="insert_process.php" method="post">
         이름 : <input type="text" name="name" placeholder="이름을 입력하세요"><br><br>

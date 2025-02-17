@@ -27,7 +27,6 @@ if ($id <= 0) {
     <title>사용자 확인</title>
 </head>
 <body>
-    <h5>환영합니다, <?php echo $_SESSION['username']; ?>님! <a href="logout.php">로그아웃</a> </h5>
     <h3>게시판 > 사용자 확인</h3>
     <form action="update_pass_process.php" method="post">
         <p>비밀번호 : <input type="password" name="password" placeholder="비밀번호를 입력하세요." required></p>

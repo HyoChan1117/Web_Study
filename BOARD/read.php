@@ -45,7 +45,6 @@ $conn->close();
     <title>게시글 상세 보기</title>
 </head>
 <body>
-    <h5>환영합니다, <?php echo $_SESSION['username']; ?>님! <a href="logout.php">로그아웃</a> </h5>
     <h3>게시판 > 상세보기</h3>
     <h3><?php echo $row['subject']; ?></h3>
     <p><strong>작성자:</strong> <?php echo $row['name']; ?></p>

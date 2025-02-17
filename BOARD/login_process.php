@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 $id = $_POST['id'];
 $pass = $_POST['password'];
 
-// SQL 실행 (Prepared Statement 미사용, 직접 쿼리 실행)
+// SQL 실행
 $sql = "SELECT * FROM login WHERE id = '$id' AND password = '$pass'";
 $result = $conn->query($sql);
 
@@ -27,12 +27,11 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // 세션에 사용자 정보 저장
     $_SESSION['username'] = $id; 
-
-    echo "<script>alert('로그인 성공!'); location.href='list.php';</script>";
+    header("Refresh: 2; URL=list.php");
     exit();
 } else {
-    echo "<script>alert('로그인 실패: 아이디 또는 비밀번호가 틀렸습니다.'); history.back();</script>";
-    exit();
+    header("Refresh: 2; URL=login.php");
+    echo "로그인 실패! 아이디 또는 비밀번호가 틀렸습니다.";
 }
 
 // 연결 종료

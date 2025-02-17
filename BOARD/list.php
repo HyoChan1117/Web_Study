@@ -28,7 +28,6 @@ $result = $conn->query($sql);
     <title>게시판 리스트</title>
 </head>
 <body>
-    <h5>환영합니다, <?php echo $_SESSION['username']; ?>님! <a href="logout.php">로그아웃</a> </h5>
     <h3>게시판 > 리스트</h3>
     <table border="1">
         <tr>
