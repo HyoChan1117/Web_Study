@@ -29,8 +29,9 @@ if ($result->num_rows > 0) {
         header("Location: update.php?id=$id");
         exit;
     } else {
+        header("Refresh: 2; URL=update_pass.php?id=$id");
         echo "비밀번호가 일치하지 않습니다.";
-        header("Refresh: 2; ");
+        exit();
     }
 } else {
     echo "게시글 없음";

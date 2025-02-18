@@ -29,7 +29,9 @@ if ($result->num_rows > 0) {
         header("Location: delete.php?id=$id");
         exit;
     } else {
-        echo "<script>alert('비밀번호가 일치하지 않습니다.'); history.back();</script>";
+        header("Refresh: 2; URL=delete_pass.php?id=$id");
+        echo "비밀번호가 일치하지 않습니다.";
+        exit();
     }
 } else {
     echo "게시글 없음";
