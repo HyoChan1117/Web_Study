@@ -1,18 +1,6 @@
 <?php
 include 'header.php';
-
-$servername = "localhost";
-$username = "hyochan";  // 본인의 MySQL 계정명
-$password = "40957976";  // 본인의 MySQL 비밀번호
-$database = "board_login";  // 사용할 데이터베이스
-
-// MySQL 연결
-$conn = new mysqli($servername, $username, $password, $database);
-
-// 연결 확인
-if ($conn->connect_error) {
-    die("연결 실패: " . $conn->connect_error);
-}
+include 'db_connect.php';
 
 // 게시글 가져오기
 $sql = "SELECT id, name, subject, created_at  FROM board ORDER BY created_at DESC";
@@ -52,9 +40,7 @@ $result = $conn->query($sql);
         ?>
     </table>
     <br>
-    <form action="insert.php" method="post">
-        <button type="submit">글쓰기</button>
-    </form>
+    <button><a href="insert.php">글쓰기</a></button>
 </body>
 </html>
 

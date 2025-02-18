@@ -29,7 +29,8 @@ if ($result->num_rows > 0) {
         header("Location: update.php?id=$id");
         exit;
     } else {
-        echo "<script>alert('비밀번호가 일치하지 않습니다.'); history.back();</script>";
+        echo "비밀번호가 일치하지 않습니다.";
+        header("Refresh: 2; ");
     }
 } else {
     echo "게시글 없음";

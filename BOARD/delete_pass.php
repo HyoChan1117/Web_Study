@@ -16,7 +16,9 @@ if ($conn->connect_error) {
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($id <= 0) {
-    die("<script>alert('잘못된 접근입니다.'); history.back();</script>");
+    header("Refresh: 2; URL=delete_pass.php?id=$id");
+    echo "잘못된 접근입니다.";
+    exit();
 }
 ?>
 
