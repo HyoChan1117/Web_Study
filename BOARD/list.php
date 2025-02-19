@@ -80,9 +80,41 @@ $result = $conn->query($sql);
     <!-- 페이징 -->
     <div>
         <?php if ($totalPages > 1): ?>
-            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                <a href="?search_type=<?= $search_type ?>&search_query=<?= $search_query ?>&page=<?= $i ?>"><?= $i ?></a>
+            <?php
+            $pagesPerBlock = 5; // 한 번에 표시할 페이지 개수
+            $currentBlock = ceil($page / $pagesPerBlock); // 현재 블록 번호
+            $startPage = ($currentBlock - 1) * $pagesPerBlock + 1; // 블록의 시작 페이지
+            $endPage = min($startPage + $pagesPerBlock - 1, $totalPages); // 블록의 마지막 페이지
+            ?>
+
+            <!-- 처음 페이지 버튼 -->
+            <?php if ($page > 1): ?>
+                <a href="?search_type=<?= $search_type ?>&search_query=<?= $search_query ?>&page=1"><<</a>
+            <?php endif; ?>
+
+            <!-- 이전 블록 이동 -->
+            <?php if ($startPage > 1): ?>
+                <a href="?search_type=<?= $search_type ?>&search_query=<?= $search_query ?>&page=<?= $startPage - 1 ?>"><</a>
+            <?php endif; ?>
+
+            <!-- 페이지 번호 출력 -->
+            <?php for ($i = $startPage; $i <= $endPage; $i++): ?>
+                <?php if ($i == $page): ?>
+                    <strong><?= $i ?></strong>
+                <?php else: ?>
+                    <a href="?search_type=<?= $search_type ?>&search_query=<?= $search_query ?>&page=<?= $i ?>"><?= $i ?></a>
+                <?php endif; ?>
             <?php endfor; ?>
+
+            <!-- 다음 블록 이동 -->
+            <?php if ($endPage < $totalPages): ?>
+                <a href="?search_type=<?= $search_type ?>&search_query=<?= $search_query ?>&page=<?= $endPage + 1 ?>">></a>
+            <?php endif; ?>
+
+            <!-- 마지막 페이지 버튼 -->
+            <?php if ($page < $totalPages): ?>
+                <a href="?search_type=<?= $search_type ?>&search_query=<?= $search_query ?>&page=<?= $totalPages ?>">>></a>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 
