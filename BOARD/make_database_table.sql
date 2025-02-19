@@ -67,3 +67,9 @@ INSERT INTO board (subject, content, name) VALUES
 ('테스트 제목 48', '테스트 내용 48입니다.', '사용자48'),
 ('테스트 제목 49', '테스트 내용 49입니다.', '사용자49'),
 ('테스트 제목 50', '테스트 내용 50입니다.', '사용자50');
+
+
+CREATE Table test (
+    id INT AUTO_INCREMENT PRIMARY key,
+    test char(20)
+)
