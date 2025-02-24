@@ -16,6 +16,8 @@ CREATE TABLE login (
     password CHAR(20) NOT NULL
 );
 
+ALTER TABLE board ADD COLUMN file VARCHAR(255) DEFAULT NULL;
+
 INSERT INTO board (subject, content, name) VALUES
 ('테스트 제목 1', '테스트 내용 1입니다.', '사용자1'),
 ('테스트 제목 2', '테스트 내용 2입니다.', '사용자2'),
