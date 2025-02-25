@@ -1,0 +1,12 @@
+CREATE DATABASE board_login2
+
+USE board_login2
+
+CREATE TABLE board (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    password VARCHAR(20) NOT NULL,
+    subject VARCHAR(20) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
