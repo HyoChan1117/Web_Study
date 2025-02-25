@@ -8,11 +8,11 @@
 <body>
     <h3>게시판 > 글쓰기</h3>
     <form action="insert_process.php" method="post">
-        <p>이름: <input type="text" name="name" placeholder="이름을 입력하세요."></p>
-        <p>비밀번호: <input type="password" name="password" placeholder="비밀번호를 입력하세요."></p>
-        <p>제목: <input type="text" name="subject" placeholder="제목을 입력하세요."></p>
+        <p>이름: <input type="text" name="name" placeholder="이름을 입력하세요." required></p>
+        <p>비밀번호: <input type="password" name="password" placeholder="비밀번호를 입력하세요." required></p>
+        <p>제목: <input type="text" name="subject" placeholder="제목을 입력하세요." required></p>
         <p>내용:</p>
-        <p><textarea name="content" rows='5' cols='30' placeholder="내용을 입력하세요."></textarea></p>
+        <p><textarea name="content" rows='5' cols='30' placeholder="내용을 입력하세요." required></textarea></p>
         <button>제출</button> <button type="reset">초기화</button>
     </form>
     <br>

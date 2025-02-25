@@ -29,8 +29,8 @@ else {
     <title>게시판 상세보기</title>
 </head>
 <body>
-    <h3>게시판 상세보기</h3>
-    <h3><?php echo $row['subject'] ?></h3>
+    <h3>게시판 > 상세보기</h3>
+    <h3><?php echo $row['subject']; ?></h3>
     <p><strong>작성자</strong>: <?php echo $row['name']; ?></p>
     <p><strong>작성일</strong>: <?php echo $row['created_at']; ?></p>
     <br>
