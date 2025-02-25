@@ -35,8 +35,7 @@ else {
     <p><strong>작성일</strong>: <?php echo $row['created_at']; ?></p>
     <br>
     <p><?php echo $row['content']; ?></p>
-    <button><a href='update.php?id=<?php echo $id ?>'>수정</a></button>
-    <button><a href='delete.php?id=<?php echo $id ?>'>삭제</a></button>
+    <button><a href='pass_check.php?id=<?php echo $id ?>'>편집</a></button>
     <br><hr>
     <p>게시판 목록으로 돌아가시겠습니까? <a href='list.php'>돌아가기</a></p>
 </body>

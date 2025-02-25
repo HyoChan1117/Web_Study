@@ -3,7 +3,7 @@
 include("db_connect.php");
 
 // 쿼리 실행
-$sql = "SELECT id, name, subject, content FROM board ORDER BY created_at";  // SELECT로 데이터를 읽어옴 -> 객체로 저장장
+$sql = "SELECT * FROM board ORDER BY created_at";  // SELECT로 데이터를 읽어옴 -> 객체로 저장장
 $result = $conn->query($sql);  // $sql을 쿼리로 실행
 ?>
 
@@ -34,7 +34,7 @@ $result = $conn->query($sql);  // $sql을 쿼리로 실행
                     echo "<td>{$row['id']}</td>";
                     echo "<td>{$row['name']}</td>";
                     echo "<td><a href='read.php?id={$row['id']}'>{$row['subject']}</a></td>";
-                    echo "<td>{$row['content']}</td>";
+                    echo "<td>{$row['created_at']}</td>";
                     echo "<tr>";
                 }
             }
