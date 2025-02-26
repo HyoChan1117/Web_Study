@@ -96,6 +96,7 @@ if (!$row) {
 
         // 댓글 삭제 폼 추가
         echo "<form action='comment_delete.php' method='post'>";
+        echo "<input type='hidden' name='id' value='$id'>";
         echo "<input type='hidden' name='comment_id' value='{$parent['id']}'>";
         echo "<p>비밀번호 입력 후 삭제: <input type='password' name='password' required> ";
         echo "<button type='submit'>삭제</button></p>";

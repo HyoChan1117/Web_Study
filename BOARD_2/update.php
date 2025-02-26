@@ -31,20 +31,20 @@ if (!$row) {
 <body>
     <h3>게시판 > 상세보기 > 수정</h3>
     <form action="update_process.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
-        <p>이름: <input type="text" name="name" value="<?php echo $row['name']; ?>" required></p>
-        <p>비밀번호: <input type="password" name="password" required></p>
-        <p>제목: <input type="text" name="subject" value="<?php echo $row['subject']; ?>" required></p>
+        <p>이름: <input type="text" name="name" value="<?php echo $row['name']; ?>" placeholder="이름을 입력하세요." required></p>
+        <p>비밀번호: <input type="password" name="password" placeholder="비밀번호를 입력하세요." required></p>
+        <p>제목: <input type="text" name="subject" value="<?php echo $row['subject']; ?>" placeholder="제목을 입력하세요." required></p>
         <p>내용:</p>
-        <p><textarea name="content" rows="5" cols="30" required><?php echo $row['content']; ?></textarea></p>
+        <p><textarea name="content" rows="5" cols="30" placeholder="내용을 입력하세요." required><?php echo $row['content']; ?></textarea></p>
 
         <!-- 기존 파일 표시 -->
         <?php if (!empty($row['saved_file'])): ?>
-            <p>📄<a href="uploads/<?php echo $row['saved_file']; ?>" download><?php echo $row['original_file']; ?></a></p>
+            <p>첨부파일: 📄<a href="uploads/<?php echo $row['saved_file']; ?>" download><?php echo $row['original_file']; ?></a></p>
         <?php endif; ?>
 
         <!-- 파일 업로드 필드 추가 -->
-        <p>파일 첨부: <input type="file" name="file"></p>
-
+        <p><input type="file" name="file"></p>
+        <br>
         <button>수정</button> <button type="reset">초기화</button>
     </form>
     <hr>

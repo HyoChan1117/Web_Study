@@ -15,7 +15,7 @@
         <p><textarea name="content" rows="5" cols="30" placeholder="내용을 입력하세요." required></textarea></p>
         
         <!-- 파일 업로드 필드 추가 -->
-        <p>파일 첨부:</p>
+        <p>첨부파일:</p>
         <p><input type="file" name="file"></p>
         <br>
         <button>제출</button> <button type="reset">초기화</button>  
