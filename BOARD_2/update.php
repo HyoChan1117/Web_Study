@@ -13,14 +13,12 @@ if ($id == 0) {
 // 쿼리 실행(SELECT)
 $sql = "SELECT * FROM board WHERE id = $id";
 $result = $conn->query($sql);
-$row = 
-$result->fetch_assoc();
+$row = $result->fetch_assoc();
 
 // 쿼리 실행 중 문제가 발생했을 경우
 if (!$row) {
     die("쿼리 실행 중 문제가 발생했습니다.");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -32,12 +30,21 @@ if (!$row) {
 </head>
 <body>
     <h3>게시판 > 상세보기 > 수정</h3>
-    <form action="update_process.php?id=<?php echo $id; ?>" method="post">
-        <p>이름: <input type="text" name="name" placeholder="이름을 입력하세요." value="<?php echo $row['name']; ?>" requried></p>
-        <p>비밀번호: <input type="password" name="password" placeholder="비밀번호를 입력하세요." value="<?php echo $row['password']; ?>" requried></p>
-        <p>제목: <input type="text" name="subject" placeholder="제목을 입력하세요." value="<?php echo $row['subject']; ?>" requried></p>
+    <form action="update_process.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
+        <p>이름: <input type="text" name="name" value="<?php echo $row['name']; ?>" required></p>
+        <p>비밀번호: <input type="password" name="password" required></p>
+        <p>제목: <input type="text" name="subject" value="<?php echo $row['subject']; ?>" required></p>
         <p>내용:</p>
-        <p><textarea name="content" rows="5" cols="30" placeholder="내용을 입력하세요." required><?php echo $row['content']; ?></textarea></p>
+        <p><textarea name="content" rows="5" cols="30" required><?php echo $row['content']; ?></textarea></p>
+
+        <!-- 기존 파일 표시 -->
+        <?php if (!empty($row['saved_file'])): ?>
+            <p>📄<a href="uploads/<?php echo $row['saved_file']; ?>" download><?php echo $row['original_file']; ?></a></p>
+        <?php endif; ?>
+
+        <!-- 파일 업로드 필드 추가 -->
+        <p>파일 첨부: <input type="file" name="file"></p>
+
         <button>수정</button> <button type="reset">초기화</button>
     </form>
     <hr>

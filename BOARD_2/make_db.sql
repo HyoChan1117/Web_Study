@@ -1,7 +1,10 @@
+
+-- 데이터베이스 생성
 CREATE DATABASE board_login2
 
 USE board_login2
 
+-- 게시판 테이블 생성
 CREATE TABLE board (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(20) NOT NULL,
@@ -17,7 +20,20 @@ ALTER TABLE board ADD COLUMN saved_file VARCHAR(255) NULL
 
 ALTER TABLE board DROP COLUMN file_name
 
+-- 댓글 테이블 생성
+CREATE TABLE comments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    post_id INT NOT NULL,  -- 어떤 게시글의 댓글인지 저장
+    parent_id INT DEFAULT NULL,  -- 대댓글인 경우 부모 댓글 ID
+    name VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,  -- 비밀번호 저장 (삭제 시 필요)
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (post_id) REFERENCES board(id) ON DELETE CASCADE,
+    FOREIGN KEY (parent_id) REFERENCES comments(id) ON DELETE CASCADE
+);
 
+-- 테스트 게시글
 INSERT INTO board (subject, content, name) VALUES
 ('테스트 제목 1', '테스트 내용 1입니다.', '사용자1'),
 ('테스트 제목 2', '테스트 내용 2입니다.', '사용자2'),
