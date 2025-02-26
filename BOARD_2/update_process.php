@@ -5,13 +5,12 @@ include("db_connect.php");
 // id값 가져오기
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// id값을 가져오지 못한 경우
 if ($id == 0) {
     die("잘못된 접근입니다.");
 }
 
-// 기존 데이터 가져오기
-$sql = "SELECT * FROM board WHERE id = $id";
+// 기존 데이터 가져오기 (파일 정보 포함)
+$sql = "SELECT original_file, saved_file FROM board WHERE id = $id";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 
@@ -19,10 +18,14 @@ if (!$row) {
     die("게시글을 찾을 수 없습니다.");
 }
 
+// 기존 파일 정보 유지
+$original_file = $row['original_file'];
+$saved_file = $row['saved_file'];
+
 // POST 데이터 가져오기
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
-    $password = $_POST['password']; // 수정 시 비밀번호 확인 기능이 필요할 수도 있음.
+    $password = $_POST['password'];
     $subject = $_POST['subject'];
     $content = $_POST['content'];
 
@@ -38,17 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'pdf'];
 
     // 새로운 파일이 업로드된 경우 처리
-    if (!empty($file_name)) {
-        if (!in_array($file_ext, $allowed_extensions)) {
-            die("허용되지 않은 파일 형식입니다.");
-        }
-
+    if (!empty($file_name) && in_array($file_ext, $allowed_extensions)) {
         // 기존 파일 삭제
-        if (!empty($row['saved_file'])) {
-            $old_file_path = $upload_dir . $row['saved_file'];
-            if (file_exists($old_file_path)) {
-                unlink($old_file_path);
-            }
+        if (!empty($saved_file) && file_exists($upload_dir . $saved_file)) {
+            unlink($upload_dir . $saved_file);
         }
 
         // 새 파일 저장
@@ -58,22 +54,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!move_uploaded_file($file_tmp, $target_file)) {
             die("파일 업로드 실패.");
         }
-    } else {
-        // 파일을 변경하지 않는 경우 기존 데이터 유지
-        $new_file_name = $row['saved_file'];
-        $file_name = $row['original_file'];
+
+        // 파일명 업데이트
+        $original_file = $file_name;
+        $saved_file = $new_file_name;
     }
 
-    // 게시글 업데이트 쿼리 실행
-    $upSql = "UPDATE board SET name = '$name', subject = '$subject', content = '$content', original_file = '$original_file', saved_file = '$saved_file' WHERE id = '$id'";
+    // SQL 실행 (Prepared Statement 방식)
+    $upSql = "UPDATE board SET name = '$name', password = '$password', subject = '$subject', content = '$content', original_file = '$original_file', saved_file = '$saved_file' WHERE id = '$id'";
     $upResult = $conn->query($upSql);
 
     if ($upResult) {
-        header("Refresh: 2, URL='read?id=$id'");
         echo "게시글을 수정하였습니다. 게시글 페이지로 이동합니다.";
+        header("Refresh: 2; URL='read.php?id=$id'");
+        exit;
     }
     else {
-        die("게시글 수정에 실패하였습니다.");
+        die("게시글 수정에 실패하였습니다: " . $conn->error);
     }
+
+    $conn->close();
 }
 ?>

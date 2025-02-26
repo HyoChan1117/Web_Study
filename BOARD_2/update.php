@@ -32,7 +32,7 @@ if (!$row) {
     <h3>게시판 > 상세보기 > 수정</h3>
     <form action="update_process.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
         <p>이름: <input type="text" name="name" value="<?php echo $row['name']; ?>" placeholder="이름을 입력하세요." required></p>
-        <p>비밀번호: <input type="password" name="password" placeholder="비밀번호를 입력하세요." required></p>
+        <p>비밀번호: <input type="password" name="password" value="<?= $row['password'] ?>" placeholder="비밀번호를 입력하세요." required></p>
         <p>제목: <input type="text" name="subject" value="<?php echo $row['subject']; ?>" placeholder="제목을 입력하세요." required></p>
         <p>내용:</p>
         <p><textarea name="content" rows="5" cols="30" placeholder="내용을 입력하세요." required><?php echo $row['content']; ?></textarea></p>

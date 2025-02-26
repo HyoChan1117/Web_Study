@@ -55,6 +55,8 @@ $endPage = min($currentBlock * $pagesPerBlock, $totalPage) // 각 블록에서 �
         <button>확인</button>
     </form>
 
+    <br>
+
     <table border="1">
         <tr>
             <th>번호</th>
@@ -89,13 +91,15 @@ $endPage = min($currentBlock * $pagesPerBlock, $totalPage) // 각 블록에서 �
         <?php endif; ?>
 
         <!-- 페이지 내비게이션바 -->
-        <?php for ($i = $startPage ; $i <= $endPage ; $i++): ?>
-            <?php if ($i == $page): ?>
-                <strong><?= $page ?></strong>
-            <?php else: ?>
-                <a href="?page=<?= $i ?>"><?= $i ?></a>
-            <?php endif; ?>
-        <?php endfor; ?>
+        <?php if ($page > 1): ?>
+            <?php for ($i = $startPage ; $i <= $endPage ; $i++): ?>
+                <?php if ($i == $page): ?>
+                    <strong><?= $page ?></strong>
+                <?php else: ?>
+                    <a href="?page=<?= $i ?>"><?= $i ?></a>
+                <?php endif; ?>
+            <?php endfor; ?>
+        <?php endif; ?>
 
         <!-- 블록 끝 페이지가 전체 페이지 보다 작을 때 -->
         <?php if ($endPage < $totalPage): ?>

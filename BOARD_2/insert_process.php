@@ -8,9 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = $_POST['subject'];
     $content = $_POST['content'];
 
-    // 비밀번호 암호화
-    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-
     // 파일 업로드 처리
     $upload_dir = "uploads/";
     if (!is_dir($upload_dir)) {
@@ -39,18 +36,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // SQL 실행 (Prepared Statement 사용)
-    $stmt = $conn->prepare("INSERT INTO board (name, password, subject, content, original_file, saved_file) 
-                            VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $name, $hashed_password, $subject, $content, $file_name, $new_file_name);
+    $sql = "INSERT INTO board (name, password, subject, content, original_file, saved_file) VALUES ('$name', '$password', '$subject', '$content', '$file_name', '$new_file_name')";
+    $result = $conn->query($sql);
 
-    if ($stmt->execute()) {
+    if ($result) {
         echo "제출에 성공했습니다. 게시판 목록으로 이동합니다.";
         header("Refresh: 2; URL='list.php'");
     } else {
         die("제출 실패: " . $conn->error);
     }
 
-    $stmt->close();
     $conn->close();
 }
 ?>
