@@ -72,7 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else {
         die("게시글 수정에 실패하였습니다: " . $conn->error);
     }
-
-    $conn->close();
 }
+$conn->close();
 ?>
