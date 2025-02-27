@@ -91,15 +91,13 @@ $endPage = min($currentBlock * $pagesPerBlock, $totalPage) // 각 블록에서 �
         <?php endif; ?>
 
         <!-- 페이지 내비게이션바 -->
-        <?php if ($page > 1): ?>
-            <?php for ($i = $startPage ; $i <= $endPage ; $i++): ?>
-                <?php if ($i == $page): ?>
-                    <strong><?= $page ?></strong>
-                <?php else: ?>
-                    <a href="?page=<?= $i ?>"><?= $i ?></a>
-                <?php endif; ?>
-            <?php endfor; ?>
-        <?php endif; ?>
+        <?php for ($i = $startPage ; $i <= $endPage ; $i++): ?>
+            <?php if ($i == $page): ?>
+                <strong><?= $page ?></strong>
+            <?php else: ?>
+                <a href="?page=<?= $i ?>"><?= $i ?></a>
+            <?php endif; ?>
+        <?php endfor; ?>
 
         <!-- 블록 끝 페이지가 전체 페이지 보다 작을 때 -->
         <?php if ($endPage < $totalPage): ?>
