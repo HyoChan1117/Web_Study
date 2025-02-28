@@ -22,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("댓글 작성 실패: " . $conn->error);
     }
 
-    $stmt->close();
     $conn->close();
 }
 ?>
