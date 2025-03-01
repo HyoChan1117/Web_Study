@@ -45,7 +45,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         die("제출 실패: " . $conn->error);
     }
-
-    $conn->close();
 }
 ?>
