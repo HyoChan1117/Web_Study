@@ -11,7 +11,9 @@ CREATE TABLE board (
     password VARCHAR(20) NOT NULL,
     subject VARCHAR(20) NOT NULL,
     content TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    original_file VARCHAR(255) NULL,
+    saved_file VARCHAR(255) NULL
 )
 
 ALTER TABLE board ADD COLUMN original_file VARCHAR(255) NULL
