@@ -1,0 +1,63 @@
+# ===================== 시스템 및 편집기 설정 =====================
+.DS_Store                # macOS Finder 설정 파일
+Thumbs.db                # Windows 이미지 캐시
+desktop.ini              # Windows 폴더 설정
+*.swp                    # Vim 임시 파일
+*.swo
+*~
+.vscode/                 # VSCode 워크스페이스 설정
+
+# ===================== Python 관련 =====================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.env
+.env.*
+venv/
+ENV/
+env/
+
+# ===================== Node.js (프론트엔드 개발 시) =====================
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# 빌드, 캐시 폴더
+build/
+dist/
+__pycache__/
+node_modules/
+
+# ===================== 대용량 또는 바이너리 파일 =====================
+*.wav
+*.mp3
+*.mp4
+*.avi
+*.mov
+*.flac
+*.zip
+*.tar.gz
+*.7z
+*.rar
+*.exe
+*.dll
+*.iso
+*.bin
+*.img
+*.pdf
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+
+# ===================== IDE 관련 =====================
+.idea/
+*.iml
+*.sublime*
+*.vscode/
