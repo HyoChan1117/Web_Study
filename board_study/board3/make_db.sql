@@ -15,13 +15,6 @@ CREATE TABLE board (
     original_file VARCHAR(255) NULL,
     saved_file VARCHAR(255) NULL
 )
-
-ALTER TABLE board ADD COLUMN original_file VARCHAR(255) NULL
-
-ALTER TABLE board ADD COLUMN saved_file VARCHAR(255) NULL
-
-ALTER TABLE board DROP COLUMN file
-
 -- 댓글 테이블 생성
 CREATE TABLE comments (
     id INT AUTO_INCREMENT PRIMARY KEY,
