@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 요소의 이해</title>
+    <style>
+        .block {
+            background-color: lightcoral;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .inline {
+            background-color: lightblue;
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML 요소의 이해</h1>
+    <h2>블록 요소</h2>
+    <!-- 블록 요소는 한 줄 전체를 차지함 -->
+    <div class="block">나는 블록 요소</div>
+    <div class="block">나도 블록 요소</div>
+    <div>한 줄 전체 차지, 줄 바꿈 O</div>
+
+    <br>
+
+    <h2>인라인 요소</h2>
+    <!-- 인라인 요소는 블록 요소와 함께 쓰이는 것이 구조적으로 적합함 -->
+    <p>
+        <span class="inline">나는 인라인 요소</span>
+        <span class="inline">나도 인라인 요소</span>
+        <span class="inline">나도 인라인 요소</span>
+        <span class="inline">나도 인라인 요소</span>
+        <span class="inline">나도 인라인 요소</span>
+        텍스트 흐름에 따라 옆으로 배치됨
+    </p>
+    
+</body>
+</html>
