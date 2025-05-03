@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="flex-box">
+        <div>메뉴1</div>
+        <div>메뉴2</div>
+        <div>메뉴3</div>
+    </div>
+
+    <style>
+        .flex-box {
+            display: flex;
+            gap: 10px;
+            background-color: #eee;
+            padding: 10px;
+        }
+
+        .flex-box div {
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+
+    <button onclick="toggleBox()">더보기</button>
+    <div id="hiddenBox" style="display: none; padding: 10px;
+     background: #e0e0e0; margin-top: 10px;">
+     이 내용은 버튼을 클릭해야 보입니다.
+    </div>
+
+    <script>
+        function toggleBox() {
+            const box = document.getElementById('hiddenBox');
+            box.style.display = box.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
