@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Tree</title>
+</head>
+<body>
+    <h1>hello</h1>
+    <p>world</p>
+
+    <script>
+        // <html> 태그 불러오기
+        const rootNode = document.documentElement;
+
+        // 콘솔 출력하기
+        console.log("html: ", rootNode.nodeName);
+        console.log("1(Element): ", rootNode.nodeType);
+        console.log(rootNode.childNodes);
+
+        // <body> 태그 불러오기
+        const bodyNode = document.body;
+
+        // 콘솔 출력하기
+        console.log(bodyNode.nodeName)
+        console.log(bodyNode.nodeType)
+        console.log(bodyNode.parentNode)
+
+        // 부모-자식 관계 비교
+        if (rootNode === bodyNode.parentNode)
+            console.log("body의 부모는 rootNode(html)입니다.");
+        else
+            console.log("다른 노드입니다.");
+    </script>
+
+</body>
+</html>
