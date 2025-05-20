@@ -1,11 +1,8 @@
 <?php
 session_start();
 
-$conn = new mysqli("localhost", "hyochan", "40957976", "board_login");
-
-if ($conn->connect_error) {
-    die("서버 연결 실패");
-}
+// 데이터베이스 연결
+include("db_connect.php");
 
 // POST로 받은 데이터 검증 (간단히 처리)
 $id = isset($_POST['id']) ? intval($_POST['id']) : 0;

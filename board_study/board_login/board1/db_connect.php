@@ -1,8 +1,8 @@
 <?php
 // 데이터베이스 연결
 $servername = "localhost";
-$username = "hyochan";
-$password = "40957976";
+$username = "root";
+$password = "12345678";
 $database = "board_login";
 
 // MySQL 연결

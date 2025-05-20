@@ -1,16 +1,8 @@
 <?php
 include("header.php");
 
-$servername = "localhost";
-$username = "hyochan";  
-$password = "40957976";  
-$database = "board_login";  
-
-$conn = new mysqli($servername, $username, $password, $database);
-
-if ($conn->connect_error) {
-    die("연결 실패: " . $conn->connect_error);
-}
+// 데이터베이스 연결
+include("db_connect.php");
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
