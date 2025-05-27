@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <style>
+        /*
+        선택자들의 집합 : 스타일룰
+        디자인 규칙은 3가지
+        1.
+        선택자에 올 수 있는 것
+        - Tag : 태그명
+        - id : #id명
+        - class : .class명
+
+        선택자 {
+            속성(Property) : 값(value);
+            속성(Property) : 값(value);
+            속성(Property) : 값(value);
+            ...
+        }
+
+        */
+        .item {
+            width : 50px;
+            height: 50px;
+            font-size : 30px;
+            background-color : aqua;
+            border : 0.5px solid;
+        }
+        .container {
+            width : 300px;
+            background-color : blue;
+        }
+        #test {
+            background-color: aquamarine;
+        }
+        h1 {
+            color : blue;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. CSS에서 디자인을 입히는 대상 : element(요소) -->
+    <!-- 2. element에 디자인을 적용하기 위해서는 선택자가 필요함 -->
+     <h1>Hello World!</h1>
+    <div class="container">
+        <div id="test" class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+
+</body>
+</html>

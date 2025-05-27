@@ -1,0 +1,18 @@
+.header {
+    /* position: fixed;  메뉴 출력 할 때 사용 */
+    width: 100vw;
+    height: 50px;
+    background-color: black;
+}
+
+.container {
+    width: 300px;
+    height: 1000px;
+    border: 0.5px solid red;
+}
+
+#i1 {
+    width: 50%;
+    height: 50%;
+    border: 0.5px dashed blue;
+}

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 90vw;
+  background-color: green; /* 파스텔 그린톤 */
+  margin: 0 auto;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  width: 140px;
+  height: 190px;
+  margin: 10px;
+  background-size: cover;
+  background-image: url("./Cards/cardBack_red2.png");  /* 기본 뒷면 */
+  border-radius: 12px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
