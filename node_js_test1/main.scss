@@ -1,0 +1,16 @@
+/* main.scss */
+.card_container {
+    border: blue 0.5px dashed;
+    
+    .card {
+    width: 100px;
+    height: 200px;
+    background-color: black;
+    }
+}
+
+// .card_container .card {
+//     width: 100px;
+//     height: 200px;
+//     background-color: red;
+// }
