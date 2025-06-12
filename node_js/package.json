@@ -1,5 +1,5 @@
 {
-  "name": "web_test",
+  "name": "node_js",
   "version": "1.0.0",
   "scripts": {
     "dev": "parcel index.html",
@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.15.2",
     "parcel": "^2.15.2"
   }
 }
