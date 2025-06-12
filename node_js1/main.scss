@@ -1,0 +1,21 @@
+.card-box {
+    display: flex;         /* Flexbox 레이아웃 설정 - 이 요소는 flex 컨테이너가 됨 */
+    gap: 10px;             /* 각 카드들(.card-container) 사이의 간격을 10px로 설정 */
+    flex-wrap: wrap;       /* 너비가 부족하면 다음 줄로 줄바꿈 (반응형 대응 가능) */
+    justify-content: center;  /*  */
+}
+
+.card-container {
+    width: 100px;          /* 카드 하나의 너비를 100px로 설정 */
+    height: 150px;         /* 카드 하나의 높이를 150px로 설정 */
+    border: solid black 2px;  /* 검은색 실선 테두리를 2px 두께로 설정 */
+}
+
+.card-container .card {
+    width: 100%;           /* 부모(.card-container)의 너비를 100% 채움 */
+    height: 100%;          /* 부모의 높이도 100% 채움 */
+    background-repeat: no-repeat;        /* 배경 이미지 반복 없이 한 번만 표시 */
+    background-size: cover;              /* 이미지가 요소 크기에 맞게 꽉 차도록 비율 유지하며 확대/축소 */
+    background-position: center;         /* 이미지의 중심을 요소의 중심에 맞춤 */
+    background-image: url("./Cards/cardClubs2.png");  /* 배경 이미지로 카드 클럽 2 이미지 사용 */
+}
