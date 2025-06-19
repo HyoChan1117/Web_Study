@@ -1,0 +1,46 @@
+.card-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap:wrap;
+
+    max-width: 700px;
+    max-height: 900px;
+    border: 2px solid black;
+
+    .card-container {
+        width: 110px;
+        height: 150px;
+
+        .card {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+                transform: scale(1.1);
+            }
+    }
+}
+
+@for $i from 1 through 13 {
+    $num: $i;
+    @if $i == 1 {
+        $num: "A";
+    } @else if $i == 11 {
+        $num: "J";
+    } @else if $i == 12 {
+        $num: "Q";
+    } @else if $i == 13 {
+        $num: "K";
+    }
+
+    .card-box .card-container:nth-child(#{$i}) .card {
+        background-image: url("./Cards/cardHearts#{$num}.png");
+    }
+}
