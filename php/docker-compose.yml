@@ -1,0 +1,33 @@
+services:
+  web:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      # 맵핑 1. directory 동기화  2. 특정 file 동기화
+      # 1. directory 동기화
+      - ./src:/usr/share/nginx/html
+      # 2. 특정 file 동기화
+      # default.conf : nginx의 환경 설정 파일
+      # 호스트와 맵핑해서 개발 환경을 GitHub에 저장하기 위해
+      # 호스트와 맵핑하지 않으면 내가 변경한 설정은 Writable Layer에만 존재
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+
+  app:
+    image: php:8.2-fpm
+    volumes:
+      - ./src:/var/www/html
+      - ./docker/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  db_data:
