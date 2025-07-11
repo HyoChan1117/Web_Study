@@ -22,5 +22,5 @@
     $time = round($distance / $speed / 60, 2);
 
     // 결과값 출력
-    echo "Trave time from Sun to mercury : {$time} minutes";
+    echo "Trave time from Sun to {$planet} : {$time} minutes";
 ?>

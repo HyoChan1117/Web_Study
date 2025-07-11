@@ -17,6 +17,6 @@
     // 도달 시간 계산
     $time = round($distance / $speed / 60, 2);
 
-    echo "Trave time from Sun to mercury : {$time} minutes";
+    echo "Trave time from Sun to {$planet} : {$time} minutes";
 
 ?>
