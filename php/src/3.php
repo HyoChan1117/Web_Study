@@ -1,6 +1,6 @@
 <?php
 
-    // 객체나 배열의 정보를 출력
-    print_r($_COOKIE);
+    // 현재 시간을 기준으로 15초 이후에 쿠키가 종료되게 설정
+    setcookie('name', 'hyochan', time() + 15)
 
 ?>
