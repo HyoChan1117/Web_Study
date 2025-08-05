@@ -9,14 +9,13 @@
     <h1>로그인</h1>
     <form action="login_process.php" method="post">
         <fieldset>
-            <legend>계정 정보 입력</legend>
             아이디: <input type="text" name="id"><br>
-            비밀번호: <input type="password" name="pw">
+            비밀번호: <input type="password" name="password"><br>
         </fieldset>
         <button>로그인</button>
-        <input type="reset" value="초기화"><br>
+        <input type="reset" value="초기화">
+        <hr>
+        아직도 계정이 없으십니까? <a href="join.php">회원가입</a>
     </form>
-    <hr>
-    아직 계정이 없으십니까? <a href="register.php">회원가입</a>
 </body>
 </html>

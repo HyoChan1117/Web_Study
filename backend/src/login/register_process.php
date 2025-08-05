@@ -1,55 +1,40 @@
 <?php
-session_start();
-require_once('./db_conf.php');
 
-// 1. DB 연결
-$db_conn = new mysqli(db_info::DB_URL, db_info::USER_ID, db_info::PASSWD, db_info::DB);
-if ($db_conn->connect_errno) {
-    $_SESSION['error'] = "DB 연결에 실패했습니다.";
-    header("Location: register.php");
-    exit;
-}
+    // 데이터베이스 연결
+    require_once "./db_connect.php";
 
-// 2. 사용자 입력 전처리
-$username_raw = trim($_POST['username'] ?? '');
-$password_raw = trim($_POST['password'] ?? '');
-$name_raw     = trim($_POST['name'] ?? '');
+    // form 입력 값 불러오기
+    $name = isset($_POST['name']) ? $_POST['name'] : 0;
+    $id = isset($_POST['id']) ? $_POST['id'] : 0;
+    $pw = isset($_POST['pw']) ? password_hash($_POST['pw'], PASSWORD_DEFAULT) : 0;
 
-// 3. 입력값 검증
-if ($username_raw === '' || $password_raw === '' || $name_raw === '') {
-    $_SESSION['error'] = "모든 필드를 입력하세요.";
-    header("Location: register.php");
-    exit;
-}
+    // 아이디 중복 확인
+    // sql문 작성 (SELECT)
+    $sql_select = "SELECT * FROM login WHERE id='$id';";
+    
+    // 쿼리 실행
+    $result = $db_conn->query($sql_select);
 
-// 4. 비밀번호 해싱
-$password_hashed = password_hash($password_raw, PASSWORD_DEFAULT);
-
-// 5. SQL 인젝션 방지를 위한 이스케이프 처리 (실습용)
-$username = $db_conn->real_escape_string($username_raw);
-$password = $db_conn->real_escape_string($password_hashed);
-$name     = $db_conn->real_escape_string($name_raw);
-
-// 6. SQL 실행
-$sql = "
-    INSERT INTO users (username, password, name)
-    VALUES ('$username', '$password', '$name')
-";
-
-if ($db_conn->query($sql)) {
-    // 회원가입 성공
-    $db_conn->close();
-    header("Location: login.php");
-    exit;
-} else {
-    // 회원가입 실패: 중복 아이디 또는 기타 오류
-    if ($db_conn->errno === 1062) {
-        $_SESSION['error'] = "이미 사용 중인 아이디입니다.";
-    } else {
-        $_SESSION['error'] = "회원가입에 실패했습니다. 관리자에게 문의하세요.";
-        error_log("[REGISTER ERROR] " . $db_conn->error);
+    // 계정 정보 가져오기
+    if ($row = $result->fetch_assoc()) {
+        header("Refresh: 2; URL='register.php'");
+        echo "중복된 아이디가 존재합니다.";
+        exit;
     }
+
+
+    // 계정 정보 삽입
+    // sql문 작성 (INSERT)
+    $sql_insert = "INSERT INTO login (name, id, pw)
+                   VALUE ('$name', '$id', '$pw');";
+
+    // 쿼리 실행
+    if ($result = $db_conn->query($sql_insert)) {
+        header("Refresh: 2; URL='login.php'");
+        echo "회원가입 성공!";
+        exit;
+    }
+
+    // 데이터베이스 종료
     $db_conn->close();
-    header("Location: register.php");
-    exit;
-}
+?>
