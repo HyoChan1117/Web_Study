@@ -1,14 +1,20 @@
 <?php
 
-    // 데이터베이스 연결
-    require_once "./db_connect.php";
-
     // 세션 시작
     session_start();
 
     // form 입력 값 불러오기
-    $id = isset($_POST['id']) ? $_POST['id'] : 0;
-    $pw = isset($_POST['pw']) ? $_POST['pw'] : 0;
+    $id = isset($_POST['id']) ? $_POST['id'] : '';
+    $pw = isset($_POST['pw']) ? $_POST['pw'] : '';
+
+    if (empty($id) || empty($pw)) {
+        header("Refresh: 2; URL='register.php'");
+        echo "입력 값을 불러올 수 없습니다.";
+        exit;
+    }
+
+    // DB 연결
+    require_once "./db_connect.php";
 
     // sql문 작성 (SELECT)
     $sql = "SELECT * FROM login WHERE id='$id'";

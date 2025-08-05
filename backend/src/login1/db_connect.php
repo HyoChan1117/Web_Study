@@ -8,10 +8,11 @@
 
     $db_conn = new mysqli($hostname, $username, $password, $database);
 
+    // 연결 실패 시
     if ($db_conn->connect_error) {
         echo "DB 연결 실패";
     }
 
-    // 예외 처리하기 : try-catch문으로 처리 해보기!
+    echo "DB 연결 성공";
 
 ?>

@@ -4,9 +4,15 @@
     require_once "./db_connect.php";
 
     // form 입력 값 불러오기
-    $name = isset($_POST['name']) ? $_POST['name'] : 0;
-    $id = isset($_POST['id']) ? $_POST['id'] : 0;
-    $pw = isset($_POST['pw']) ? password_hash($_POST['pw'], PASSWORD_DEFAULT) : 0;
+    $name = isset($_POST['name']) ? $_POST['name'] : '';
+    $id = isset($_POST['id']) ? $_POST['id'] : '';
+    $pw = isset($_POST['pw']) ? password_hash($_POST['pw'], PASSWORD_DEFAULT) : '';
+
+    if (empty($name) || empty($id) || empty($pw)) {
+        header("Refresh: 2; URL='register.php'");
+        echo "입력 값을 불러올 수 없습니다.";
+        exit;
+    }
 
     // 아이디 중복 확인
     // sql문 작성 (SELECT)
