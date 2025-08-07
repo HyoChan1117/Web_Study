@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +7,24 @@
 </head>
 <body>
     <!--
-    아이디, 비밀번호 입력
+    아이디, 비밀번호 입력 후 로그인 버튼 클릭
 
     FORM
     - Action: login_process.php
     - Method: post
     - 입력값: 아이디(id), 비밀번호(pw)
     -->
-
     <h1>로그인</h1>
-
     <form action="login_process.php" method="post">
         <fieldset>
             <legend>사용자 정보 입력</legend>
             아이디: <input type="text" name="id" required><br>
-            비밀번호: <input type="password" name="pw" required><br>
+            비밀번호: <input type="password" name="pw" required>
         </fieldset>
         <button>로그인</button>
         <input type="reset" value="초기화">
+        <hr>
+        아직 계정이 없으십니까? <a href="register.html">회원가입</a>
     </form>
-    <hr>
-    아직도 계정이 없으십니까? <a href="register.html">회원가입</a>
 </body>
 </html>
