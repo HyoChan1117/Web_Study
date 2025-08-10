@@ -1,9 +1,11 @@
 <?php
 
-    // 세션 시작
-    session_start();
+    // 환영합니다! [사용자 이름(사용자 아이디)]님 "로그아웃(버튼)" 출력을 위한 세션 처리
+    // 1. 세션 시작
 
-    $name = $_SESSION['name'];
+
+    // 2. 세션 변수 저장 -> 로그인 프로세스 처리 중 세션 변수 값 저장
+
 
 ?>
 
@@ -11,10 +13,11 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    환영합니다! <?php echo $name; ?>님 
-    <a href="logout.php">로그아웃</a>
+    <!--
+    환영합니다! [사용자 이름(사용자 아이디)]님
+    로그아웃 버튼 활성화
+    -->
 </body>
 </html>

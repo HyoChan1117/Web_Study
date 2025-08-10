@@ -1,15 +1,9 @@
 <?php
 
-    // 데이터베이스 연결
+    // 데이터베이스 연결을 위한 변수 선언
     $hostname = 'db';
     $username = 'root';
     $password = 'root';
-    $database = 'board1';
+    $database = 'board';
 
-    $db_conn = new mysqli($hostname, $username, $password, $database);
-
-    // DB 연결 실패
-    if ($db_conn->connect_error) {
-        echo "DB 연결 실패";
-    }
 ?>
