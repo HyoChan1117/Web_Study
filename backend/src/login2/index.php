@@ -21,8 +21,12 @@
     catch (Exception $e) {
         // 데이터베이스 연결 실패 시
         // 오류 메시지 출력
-        echo "DB 연결 실패!<br>". $e;
+        echo "DB 연결 실패!<br>";
+        exit;
     }
+
+    // 데이터베이스 종료
+    $db_conn->close();
 ?>
 
 

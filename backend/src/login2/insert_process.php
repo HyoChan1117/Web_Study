@@ -3,12 +3,11 @@
     // 입력값 유효성 검사
     // 입력값을 불러오지 못할 경우 공백 처리
     $title = isset($_POST['title']) ? $_POST['title'] : '';
-    $pw = isset($_POST['pw']) ? $_POST['pw'] : '';
     $content = isset($_POST['content']) ? $_POST['content'] : '';
 
     // 유효하지 않는 입력값일 경우
     // 오류 메시지 출력 후 글쓰기 페이지 리다이렉션
-    if (empty($title) || empty($pw) || empty($content)) {
+    if (empty($title) || empty($content)) {
         header("Refresh: 2; URL='insert.php'");
         echo "유효하지 않는 입력값입니다.";
         exit;
@@ -25,11 +24,8 @@
             // 데이터베이스 연결
             $db_conn = new mysqli($hostname, $username, $password, $database);
 
-            // 비밀번호 해싱
-            $pw = password_hash($pw, PASSWORD_DEFAULT);
-
             // sql문 작성 (INSERT)
-            $sql = "INSERT INTO board (name, title, content, pw) VALUE ('$_SESSION[name]', '$title', '$pw', '$content');";
+            $sql = "INSERT INTO board (name, account, title, content) VALUE ('$_SESSION[name]', '$_SESSION[id]', '$title', '$content');";
 
             // 쿼리 실행
             $result = $db_conn->query($sql);
@@ -43,8 +39,8 @@
     catch (Exception $e) {
         // 데이터베이스 연결 실패 시
         // 오류 메시지 출력 후 글쓰기 페이지 리다이렉션
-        header("Refresh: 2; URL='insert.php'");
-        echo "DB 연결 실패";
+        // header("Refresh: 2; URL='insert.php'");
+        echo $e;
     }
 
     // 데이터베이스 연결 종료

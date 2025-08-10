@@ -17,7 +17,6 @@
     <form action="insert_process.php" method="post">
         <fieldset>
             제목: <input type="text" name="title"><br>
-            비밀번호: <input type="password" name="pw"><br>
             내용:<br>
             <textarea name="content" cols="30" rows="5"></textarea><br>
         </fieldset>
