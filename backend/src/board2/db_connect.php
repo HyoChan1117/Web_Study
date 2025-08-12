@@ -4,8 +4,6 @@
     $hostname = 'db';
     $username = 'root';
     $password = 'root';
-    $database = 'board';
+    $database = 'login1';
 
-    // 데이터베이스 연결
-    $db_conn = new mysqli($hostname, $username, $password, $database);
 ?>

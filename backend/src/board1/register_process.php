@@ -15,11 +15,8 @@
 
     // 데이터베이스 연결 (try-catch문)
     try {
-        // 데이터베이스 연결을 위한 변수 불러오기
-        require_once "./db_connect.php";
-
         // 데이터베이스 연결
-        $db_conn = new mysqli($hostname, $username, $password, $database);
+        require_once "./db_connect.php";
 
         // sql문 작성 (SELECT) - 아이디 중복 확인을 위한 select
         $sql_select = "SELECT account FROM login WHERE account='$account'";
