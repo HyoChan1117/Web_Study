@@ -11,6 +11,9 @@
         exit;
     }
 
+    // 세션 시작
+    session_start();
+
     // 데이터베이스 연결
     try {
         // 데이터베이스 연결
@@ -26,10 +29,18 @@
         // 오류 메시지 출력 후 해당 게시물 페이지 리다이렉션
         if ($result->num_rows <= 0) {
             header("Refresh: 2; URL='read.php?id=$id'");
-            echo "해당 게시물이 없습니다.";
+            echo "해당 게시글이 없습니다.";
             exit;
         } else {    // 결과값이 있을 경우
             $row = $result->fetch_assoc();
+
+            // 로그인 정보와 해당 게시글 작성자 정보가 다를 경우
+            // 해당 게시글의 권한이 없습니다. -> 게시물 목록 페이지 리다이렉션
+            if ($_SESSION['account'] != $row['account']) {
+                header("Refresh: 2; URL='index.php'");
+                echo "해당 게시글의 권한이 없습니다.";
+                exit;
+            }
         }
     } catch (Exception $e) {
         // DB 오류 메시지 출력 후 해당 게시물 페이지 리다이렉션
@@ -39,8 +50,6 @@
     // 데이터베이스 종료
     $db_conn->close();
 
-    // 로그인 정보 불러오기
-    require_once "./header.php";
 ?>
 
 <!DOCTYPE html>
@@ -66,14 +75,16 @@
     Method: post
     입력값: 제목, 내용
     -->
+    안녕하세요! <?= $row['name']."($row[account])"; ?>님 
+    <a href="logout.php">로그아웃</a>
     <h1>게시판 목록 > 게시글 > 수정</h1>
-    <form action="update_process.php" method="post">
+    <form action="update_process.php?id=<?= $id; ?>" method="post">
         <fieldset>
             제목: <input type="text" name="title" value="<?= $row['title']; ?>"><br>
             내용:<br>
             <textarea name="content" rows="5" cols="30"><?= $row['content']; ?></textarea>
         </fieldset>
-        <button><a href="update_process.php">수정</a></button>
+        <button>수정</button>
         <input type="reset" value="초기화">
         <hr>
         해당 게시글로 돌아가시겠습니까? <a href="read.php?id=<?= $id; ?>">돌아가기</a>

@@ -23,8 +23,10 @@
         $result = $db_conn->query($sql);
 
         // 결과값이 없을 경우
+        // 해당 게시글이 없습니다. -> 게시판 목록 페이지 리다이렉션
         if ($result->num_rows <= 0) {
-            echo "해당 게시물이 없습니다.";
+            header("Refresh: 2; URL='index.php'");
+            echo "해당 게시글이 없습니다.";
             exit;
         } else {     // 결과값이 있을 경우
             $row = $result->fetch_assoc();
@@ -61,6 +63,7 @@
     제목:
     내용:
 
+    *해당 게시글 작성자만 뜨게 만들기!
     수정 버튼 활성화
     삭제 버튼 활성화
     -->
@@ -68,14 +71,27 @@
     <fieldset>
         <strong>작성자: </strong><?= "$row[name] ($row[account])"; ?><br>
         <strong>작성일: </strong><?= $row['created_at']; ?><br>
-        <strong>수정일: </strong><?= $row['updated_at']; ?><br>
+        <?php
+            // 수정일 값이 있을 경우 출력
+            if (isset($row['updated_at'])) {
+                echo "<strong>수정일: </strong>$row[updated_at]<br>";
+            }
+        ?>
         <hr>
         <strong>제목: </strong><?= $row['title']; ?><br>
         <strong>내용:</strong><br>
         <?= $row['content']; ?><br>
     </fieldset>
-    <button><a href="update.php?id=<?= $row['id']; ?>">수정</a></button>
-    <button><a href="delete.php?id=<?= $row['id']; ?>">삭제</a></button>
+    <?php
+        // 게시글 작성 계정과 로그인 정보가 일치한다면
+        // 버튼 활성화
+        if ($row['account'] == $_SESSION['account']) {
+            echo "<button><a href=update.php?id=$row[id]>수정</a></button>";
+            echo "<button><a href=delete.php?id=$row[id]>삭제</a></button>";
+        } else {    // 일치하지 않는다면 버튼 비활성화 -> 권한 없음 메시지 출력
+            echo "<strong>-> 해당 게시글 변경 권한이 없습니다.</strong>";
+        }
+    ?>
     <hr>
     게시판 목록으로 돌아가시겠습니까? <a href="index.php">돌아가기</a>
 </body>

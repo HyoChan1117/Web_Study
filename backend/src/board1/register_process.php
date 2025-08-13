@@ -1,13 +1,17 @@
 <?php
 
+    // 유효성 검사를 위한 함수 정의
+    require_once "./check_value.php";
+
     // 입력값 유효성 검사
-    $name = isset($_POST['name']) ? $_POST['name'] : '';
-    $account = isset($_POST['account']) ? $_POST['account'] : '';
-    $pw = isset($_POST['pw']) ? $_POST['pw'] : '';
+    $name = check_value('name');
+    $account = check_value('account');
+    $pw = check_value('pw');
+    $pw_check = check_value('pw_check');
 
     // 유효하지 않는 입력값이 넘어올 경우
     // 오류 메시지 출력 후 회원가입 페이지 리다이렉션
-    if (empty($name) || empty($account) || empty($pw)) {
+    if (empty($name) || empty($account) || empty($pw) || empty($pw_check)) {
         header("Refresh: 2; URL='register.html'");
         echo "유효하지 않는 입력값입니다.";
         exit;
@@ -31,6 +35,14 @@
             echo "중복되는 아이디가 존재합니다.";
             exit;
         } else {     // 아이디 중복이 없을 경우
+            // 비밀번호와 비밀번호 확인 입력값이 다를 경우
+            // 비밀번호가 일치하지 않습니다. -> 회원가입 페이지 리다이렉션
+            if ($pw != $pw_check) {
+                header("Refresh: 2; URL='register.html'");
+                echo "비밀번호가 일치하지 않습니다.";
+                exit;
+            }
+
             // 비밀번호 해싱
             $pw = password_hash($pw, PASSWORD_DEFAULT);
 
