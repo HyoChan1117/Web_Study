@@ -8,7 +8,7 @@
         $db_conn = new mysqli($hostname, $username, $password, $database);
         
         // sql문 작성 (SELECT)
-        $sql = "SELECT * FROM board";
+        $sql = "SELECT * FROM board1";
 
         // 쿼리 실행
         $result = $db_conn->query($sql);
