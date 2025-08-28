@@ -19,7 +19,7 @@
         $db_conn = new mysqli($hostname, $username, $password, $database);
 
         // sql문 작성 (SELECT)
-        $sql = "SELECT * FROM board1 WHERE id=$id";
+        $sql = "SELECT * FROM board WHERE id=$id";
 
         // 쿼리 실행
         $result = $db_conn->query($sql);

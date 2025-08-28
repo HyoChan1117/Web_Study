@@ -39,7 +39,7 @@
         $pagesPerBlock = 5;    // 한 블록 당 페이지 수
         $currentBlock = ceil($page / $pagesPerBlock);
         $startPage = ($currentBlock - 1) * $pagesPerBlock + 1;
-        $endPage = min($currentBlock * $pagesPerBlock,$totalPage);
+        $endPage = min($currentBlock * $pagesPerBlock, $totalPage);
 
     } catch (Exception $e) {
         // DB 관련 오류 메시지 출력

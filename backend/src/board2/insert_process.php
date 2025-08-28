@@ -27,7 +27,7 @@
         $db_conn = new mysqli($hostname, $username, $password, $database);
 
         // sql문 작성 (INSERT)
-        $sql = "INSERT INTO board1 (name, account, title, content) VALUES ('$name', '$account', '$title', '$content')";
+        $sql = "INSERT INTO board (name, account, title, content) VALUES ('$name', '$account', '$title', '$content')";
 
         // 쿼리 작성
         $result = $db_conn->query($sql);

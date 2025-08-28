@@ -14,17 +14,9 @@
 <head>
 </head>
 <body>
-    <?php
 
-        if (empty($_SESSION)) {
-            echo "환영합니다! 게스트님<br>";
-            echo "<a href='login.php>로그인</a>'";
-        } else {
-            echo "환영합니다! $name($account)님";
-            echo "<a href='logout.php'> 로그아웃</a>";
-        }
-
-    ?>
+    환영합니다! <?= $name."(".$account.")" ?>님
+    <a href='logout.php'> 로그아웃</a>
     
 </body>
 </html>
