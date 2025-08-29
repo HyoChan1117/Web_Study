@@ -4,11 +4,18 @@
     require_once './header.php';
 
     // 검색 기능
+    // 검색 타입: 제목(기본), 내용
+    // 검색 쿼리: null(기본) - trim 처리
     $search_type = isset($_GET['search_type']) ? $_GET['search_type'] : 'title';
-    $search_query = isset($_GET['search_query']) ? trim($_GET['search_query']) : '';
+    $search_query = isset($_GET['search_query']) ? $_GET['search_query'] : '';
 
-    // 검색 조건
-    $where = "WHERE $search_type LIKE '%$search_query%'";
+    // 검색 쿼리가 비어있지 않을 경우 -> 검색 결과 반영
+    // WHERE $search_type LIKE '%$search_query%'
+    $where = '';
+
+    if (!empty($search_query)) {
+        $where = "WHERE $search_type LIKE '%$search_query%'";
+    }
     
     // 데이스베이스 연결을 위한 변수 불러오기
     require_once './db_connect.php';
@@ -44,7 +51,11 @@
     <!--
     게시판 목록
 
-    검색타입 검색창 검색버튼
+    FORM
+    Action: index.php
+    Method: get
+    검색타입 검색쿼리 검색버튼
+    현재 검색어: $search_query($search_type)
 
     <table>
     번호 작성자 제목 작성시간 수정시간
@@ -56,17 +67,25 @@
 
     <h1>게시판 목록</h1>
 
-    <form action="index.php" method="get">
+    <form action="index.php" method='get'>
         <select name="search_type">
             <option value="title">제목</option>
             <option value="content">내용</option>
         </select>
-
         <input type="search" name="search_query">
 
         <button>검색</button>
-
     </form>
+
+    <?php
+
+        // 검색쿼리가 있을 경우
+        // 현재 검색어(검색타입) 표시
+        if (!empty($search_query)) {
+            echo "현재 검색어(타입): $search_query($search_type)";
+        }
+
+    ?>
     
     <table border='1'>
         <tr>
