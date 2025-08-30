@@ -1,0 +1,1 @@
+INSERT INTO board (name, account, title, content) VALUES ('김효찬', 'rlagycks', '안녕', '안녕!');

@@ -3,6 +3,12 @@
     // 세션 변수 불러오기
     require_once './header.php';
 
+    // 페이지네이션
+    // limit, page, offset
+    $limit = 5;
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $offset = ($page - 1) * $limit;
+
     // 검색 기능
     // 검색 타입: 제목(기본), 내용
     // 검색 쿼리: null(기본) - trim 처리
@@ -25,10 +31,23 @@
         $db_conn = new mysqli($hostname, $username, $password, $database);
         
         // sql문 작성 (SELECT)
-        $sql = "SELECT * FROM board $where ORDER BY created_at DESC";
+        $sql = "SELECT * FROM board $where ORDER BY created_at DESC LIMIT $limit OFFSET $offset";
 
         // 쿼리 실행
         $result = $db_conn->query($sql);
+
+        // sql문 작성 (SELECT COUNT(*))
+        $total_sql = "SELECT COUNT(*) total FROM board";
+        $total_result = $db_conn->query($total_sql);
+        $total_row = $total_result->fetch_assoc();
+        $total = $total_row['total'];  // 전체 게시글 수
+        $total_page = ceil($total / $limit);   // 전체 페이지 수
+
+        // 페이지 블록
+        $pagePerBlock = 5;   // 한 블럭 당 페이지 수
+        $currentBlock = ceil($page / $pagePerBlock);    // 현재 블럭
+        $startPage = ($currentBlock - 1) * $pagePerBlock + 1;   // 시작 페이지
+        $endPage = min($currentBlock * $pagePerBlock, $total_page);   // 끝 페이지
 
     } catch (Exception $e) {
         // DB 오류 발생
@@ -61,6 +80,9 @@
     번호 작성자 제목 작성시간 수정시간
     if 게시물이 없다면 -> 게시물이 없습니다.
     </table>
+
+    페이지네이션
+    << < 1 2 3 4 5 > >>
 
     글쓰기 버튼 활성화 -> insert.php
     -->
@@ -117,6 +139,36 @@
             }
         ?>
     </table>
+
+    <?php
+
+        $previousPage = $startPage - $pagePerBlock;
+
+        // << <
+        if ($currentBlock != 1) {
+            echo "<a href='index.php?page=1'><<</a> ";
+            echo "<a href='index.php?page=$previousPage'><</a> ";
+        }
+        
+        // 페이지
+        for ($i = $startPage ; $i <= $endPage ; $i++) {
+            if ($i == $page) {
+                echo "<a href='index.php?page=$i'><strong>$i</strong></a> ";
+            } else {
+                echo "<a href='index.php?page=$i'>$i</a> ";
+            }
+        }
+
+        $nextPage = $endPage + 1;
+
+        // > >>
+        if (ceil($total_page / $pagePerBlock) != $currentBlock) {
+            echo "<a href='index.php?page=$nextPage'>></a> ";
+            echo "<a href='index.php?page=$total_page'>>></a> ";
+        }
+
+    ?>
+    <br>
 
     <button><a href="insert.php">글쓰기</a></button>
 
