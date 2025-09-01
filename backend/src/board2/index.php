@@ -7,7 +7,7 @@
     // limit, page, offset
     $limit = 5;
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-    $offset = ($page - 1) * $limit;
+    $offset = ($page - 1) * 4;
 
     // 검색 기능
     // 검색 타입: 제목(기본), 내용
@@ -31,7 +31,7 @@
         $db_conn = new mysqli($hostname, $username, $password, $database);
         
         // sql문 작성 (SELECT)
-        $sql = "SELECT * FROM board $where ORDER BY created_at DESC LIMIT $limit OFFSET $offset";
+        $sql = "SELECT * FROM board $where LIMIT $limit OFFSET $offset";
 
         // 쿼리 실행
         $result = $db_conn->query($sql);
@@ -94,7 +94,7 @@
             <option value="title">제목</option>
             <option value="content">내용</option>
         </select>
-        <input type="search" name="search_query">
+        <input type="search" name="search_query" value="하루나">
 
         <button>검색</button>
     </form>

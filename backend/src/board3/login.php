@@ -35,7 +35,7 @@
     <hr>
 
     게스트 계정으로 입장하시겠습니까?
-    <a href="index.php">돌아가기</a>
+    <a href="index.php">들어가기</a>
 
 </body>
 </html>
