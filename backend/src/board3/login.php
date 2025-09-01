@@ -22,7 +22,7 @@
     <form action="login_process.php" method="post">
         <fieldset>
             <legend>사용자 정보 입력</legend>
-            아이디: <input type="text" name="name" require><br>
+            아이디: <input type="text" name="account" require><br>
             비밀번호: <input type="password" name="pw" require>
         </fieldset>
         <button>로그인</button>

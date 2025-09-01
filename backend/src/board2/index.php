@@ -94,7 +94,7 @@
             <option value="title">제목</option>
             <option value="content">내용</option>
         </select>
-        <input type="search" name="search_query" value="하루나">
+        <input type="search" name="search_query">
 
         <button>검색</button>
     </form>

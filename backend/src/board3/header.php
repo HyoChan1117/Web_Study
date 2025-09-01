@@ -24,7 +24,7 @@
     환영합니다! <?= $name; ?>(<?= $account; ?>) 
     
     <?php
-        if ($account = "GUEST") {
+        if ($account == "GUEST") {
             echo "<a href='login.php'>로그인</a>";
         } else {
             echo "<a href='logout.php'>로그아웃</a>";
